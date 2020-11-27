@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            background: antiquewhite;
+        }
+        .btn {
+            line-height: 40px;
+            margin: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<h2>webView</h2>
+<div><span>请输入要传入的值：</span><input type="text" id="input"/></div>
+<div id="btn"><span class="btn">点我</span></div>
+<script type="text/javascript">
+    var btnEle=document.getElementById('btn');
+    var inputEle=document.getElementById('input')
+    btnEle.addEventListener("click",function () {
+        var str=inputEle.value;
+       if (window.imoocLauncher){//调用 java中的方法
+           imoocLauncher.setValue(str);
+       }else{
+           alert('imoocLauncher not found!')
+       }
+    })
+    //通过 Java调用 js代码 进行 复制的方法。
+    var remote=function (str) {
+        inputEle.value=str;
+    }
+
+</script>
+</body>
+</html>
